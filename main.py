@@ -10,12 +10,12 @@ import os
 init(autoreset=True)
 config = toml.load("./config.toml")
 
-if not os.path.isfile(config["proxies"]):
+if config["proxies"] == "":
+  proxies = ["None"]
+elif not os.path.isfile(config["proxies"]):
   print(f"{Fore.RED}[!] proxies are wrong. set to txt file path or blank")
   while True:
     pass
-if config["proxies"] == "":
-  proxies = ["None"]
 else:
   with open(config["proxies"], "r") as f:
     s = f.read()
