@@ -34,8 +34,8 @@ def gen():
     if res.status_code in range(200, 299):
       balance = res.json()["balance"]
       print(f"{Fore.GREEN}[+] Working Key: {key} | Balance: {balance}")
-      with open("capmon.txt", "w") as f:
-        f.write(key)
+      with open("results.txt", "a") as f:
+        f.write(f"{key}\n")
     elif "account authorization is invalid" in res.text:
       print(f"{Fore.RED}[!] Not Working Key: {key}")
     else:
